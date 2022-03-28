@@ -11,6 +11,7 @@ django-heroku = "*"
 whitenoise = "*"
 django-allauth = "*"
 python-decouple = "*"
+djangorestframework = "*"
 
 [dev-packages]
 

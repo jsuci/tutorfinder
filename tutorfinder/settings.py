@@ -38,12 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django.contrib.sites',
 
-    'allauth',
+    'api.apps.ApiConfig',
+
+    # third party apps
     'allauth.account',
     'allauth.socialaccount',
+    'rest_framework',
+
+
 ]
 
 MIDDLEWARE = [
