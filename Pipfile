@@ -10,6 +10,7 @@ psycopg2 = "*"
 django-heroku = "*"
 whitenoise = "*"
 django-allauth = "*"
+python-decouple = "*"
 
 [dev-packages]
 
