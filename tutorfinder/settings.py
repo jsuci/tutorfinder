@@ -40,16 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-<<<<<<< HEAD
-    'api.apps.ApiConfig',
-
-    # third party apps
-    'allauth.account',
-    'allauth.socialaccount',
-    'rest_framework',
-
-
-=======
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
@@ -61,7 +51,6 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
->>>>>>> feature/authentication
 ]
 
 MIDDLEWARE = [
