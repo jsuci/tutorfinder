@@ -12,6 +12,8 @@ whitenoise = "*"
 django-allauth = "*"
 python-decouple = "*"
 djangorestframework = "*"
+django-cors-headers = "*"
+djoser = "*"
 
 [dev-packages]
 
