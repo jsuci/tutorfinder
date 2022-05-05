@@ -14,6 +14,7 @@ python-decouple = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 djoser = "*"
+pillow = "*"
 
 [dev-packages]
 
