@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+
+{% load i18n %}
+
+{% block title %}Sign Up | TutorFinder{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-6 is-offset-3">
+            <h3 class="title is-3">{% trans "Sign Up" %}</h3>
+            <h5 class="subtitle is-5">
+                {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+            </h5>
+
+            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <label class="label">{{ field.label }}</label>
+                    {{ field }}
+                {% endfor %}
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+
+                <div class="buttons">
+                    <button class="button is-success" type="submit">{% trans "Sign Up" %}</button>
+
+                </div>
+            </form>
+
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %} 
+                        <p class="has-text-danger">
+                            {{ error|escape }}
+                        </p>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+
+            {% for error in form.non_field_errors %}
+                <ul><p class="has-text-danger">{{ error|escape }}</p></ul>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -5,16 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
-gunicorn = "*"
-psycopg2 = "*"
-django-heroku = "*"
-whitenoise = "*"
 django-allauth = "*"
-python-decouple = "*"
 djangorestframework = "*"
-django-cors-headers = "*"
-djoser = "*"
-pillow = "*"
 
 [dev-packages]
 

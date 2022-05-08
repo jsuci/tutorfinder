@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-full has-text-centered">
+        <img src="{% static 'images/TutorFinder.png' %}" width="300" alt="" class="pb-6">
+        
+        <div class="columns">
+          <div class="column">
+            <form>
+              <div class="field has-addons is-justify-content-center is-fullwidth">
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option>Science Tutors</option>
+                      <option>English Tutors</option>
+                      <option>Math Tutors</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="control">
+                  <a class="button is-info">
+                    Search
+                  </a>
+                </div>
+              </div>             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
