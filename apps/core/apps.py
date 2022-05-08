@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TutorConfig(AppConfig):
+class CoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'tutor'
+    name = 'apps.core'
