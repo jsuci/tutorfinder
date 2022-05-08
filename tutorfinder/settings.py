@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'apps.core',
+    'apps.api',
 
     'allauth',
     'allauth.account',
 
-
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -149,15 +150,20 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_USERNAME_MIN_LENGTH = 2
 ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+
 ACCOUNT_FORMS = {
     'login': 'apps.core.forms.CustomLoginForm',
     'signup': 'apps.core.forms.CustomSignUpForm'
 }
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-
-
-# email verification on console
+# Show email verification on console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Rest-framework config
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 1
+}
