@@ -19,3 +19,4 @@ class CustomSignUpForm(SignupForm):
             field.widget.attrs.update({
                 'class': 'input mb-3'
             })
+
