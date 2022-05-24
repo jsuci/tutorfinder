@@ -1,3 +1,5 @@
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,11 +8,12 @@
     <title>{% block title %} TutorFinder {% endblock %}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    
+    <link rel="stylesheet" type="text/css" href='{% static "/css/main.css" %}'>
+
 </head>
 <body>
 <div id="wrapper">
-    <nav class="navbar is-info ">
+    <nav class="navbar is-info">
         <div class="navbar-brand">
         <a href="{% url 'frontpage' %}" class="navbar-item is-size-4 is-size-3-desktop is-white has-text-weight-bold">TutorFinder</router-link>
 
@@ -27,7 +30,7 @@
                 <div class="navbar-item">
 
                     {% if user.is_authenticated %}
-                        <span class="is-size-5 subtitle has-text-white">Welcome, {{ user.username }}</span>
+                        <span class="is-size-5 subtitle welcome">Welcome, {{ user.username }}</span>
                         <a href="{% url 'account_logout' %}" class="button is-danger">
                             Logout
                         </a>
