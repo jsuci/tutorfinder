@@ -34,7 +34,7 @@ class CustomResetPasswordForm(ResetPasswordForm):
 class CustomAddEmailForm(AddEmailForm):
 
     def __init__(self, *args, **kwargs):
-        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+        super(CustomAddEmailForm, self).__init__(*args, **kwargs)
 
         for fieldname, field in self.fields.items():
             field.widget.attrs.update({
