@@ -154,7 +154,9 @@ ACCOUNT_SESSION_REMEMBER = True
 
 ACCOUNT_FORMS = {
     'login': 'apps.core.forms.CustomLoginForm',
-    'signup': 'apps.core.forms.CustomSignUpForm'
+    'signup': 'apps.core.forms.CustomSignUpForm',
+    'reset_password': 'apps.core.forms.CustomResetPasswordForm',
+    'add_email': 'apps.core.forms.CustomAddEmailForm',
 }
 
 # Show email verification on console

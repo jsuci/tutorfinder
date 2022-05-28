@@ -1,7 +1,46 @@
 {% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
 <div class="container">
-    <div class="columns is-vcentered">
-      <div class="column is-full has-text-centered">
-          <h1 class="title">Dashboard</h1>
-    </div>
+
+    <section class="hero is-medium">
+        <div class="hero-body">
+            <div class="columns">
+                <div class="column"></div>
+
+                <div class="column has-text-centered">
+                    <a href="">
+                        <i class="fa-solid fa-address-card fa-6x p-5 has-text-info"></i>
+                        <p class="block title is-5">
+                            Profile
+                        </p>
+                    </a>
+                </div>
+
+                <div class="column has-text-centered">
+                    <a href="">
+                        <i class="fa-solid fa-magnifying-glass fa-6x p-5 has-text-info"></i>
+                        <p class="block title is-5">
+                            Search
+                        </p>
+                    </a>
+                </div>
+                <div class="column has-text-centered">
+                    <a href="">
+                        <i class="fa-solid fa-message fa-6x p-5 has-text-info"></i>
+                        <p class="block title is-5">
+                            Messages
+                        </p>
+                    </a>
+                </div>
+                <div class="column"></div>
+            </div>
+        </div>
+      </section>
+
 </div>
+
+{% endblock %}
