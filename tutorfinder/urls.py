@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from apps.core.views import frontpage, dashboard
+from apps.core.views import frontpage, dashboard, profile
 from apps.api.views import GroupViewSet, UserViewSet
 
 router = routers.DefaultRouter()
@@ -16,4 +16,5 @@ urlpatterns = [
     path('', include('allauth.urls')),
     path('', frontpage, name='frontpage'),
     path('dashboard/', dashboard, name='dashboard'),
+    path('profile/', profile, name='profile'),
 ]
