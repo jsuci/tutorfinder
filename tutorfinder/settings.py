@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'apps.core',
+    'apps.api',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,9 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
-    'apps.core',
-    'apps.api',
 
     'allauth',
     'allauth.account',
@@ -158,6 +159,10 @@ ACCOUNT_FORMS = {
     'reset_password': 'apps.core.forms.CustomResetPasswordForm',
     'add_email': 'apps.core.forms.CustomAddEmailForm',
 }
+
+AUTH_USER_MODEL = 'core.CustomUser'
+
+ACCOUNT_ADAPTER = 'apps.core.adapter.AccountAdapter'
 
 # Show email verification on console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
