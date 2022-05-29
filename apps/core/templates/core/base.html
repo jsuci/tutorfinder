@@ -32,7 +32,7 @@
                 <div class="navbar-item">
 
                     {% if user.is_authenticated %}
-                        <span class="is-size-5 subtitle welcome">Welcome, {{ user.username }}</span>
+                        <span class="is-size-5 subtitle welcome">Welcome, {{ user.username }} ({{ user.user_type|lower}})</span>
                         <a href="{% url 'account_logout' %}" class="button is-danger">
                             Logout
                         </a>
