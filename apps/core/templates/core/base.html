@@ -1,5 +1,7 @@
 {% load static %}
 
+{% load i18n %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +17,7 @@
 </head>
 <body>
 <div id="wrapper">
+    <!-- start navbar -->
     <nav class="navbar is-info">
         <div class="navbar-brand">
         <a href="{% url 'frontpage' %}" class="navbar-item is-size-4 is-size-3-desktop is-white has-text-weight-bold">TutorFinder</router-link>
@@ -53,8 +56,8 @@
 
             </div>
         </div>
-
     </nav>
+    <!-- end navbar -->
 
     <section class="section">
         {% block content %}

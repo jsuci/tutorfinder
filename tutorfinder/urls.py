@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from apps.core.views import frontpage, dashboard, profile
+from apps.core.views import frontpage, dashboard
+from apps.profiles.views import profile
 from apps.api.views import GroupViewSet, UserViewSet
 
 router = routers.DefaultRouter()
