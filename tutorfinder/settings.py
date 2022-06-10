@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-p953tln912a)=8^!03b4%nm#7uoa260zyf9wr#d@z152jt@mr)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-
+    'tutorfinderbeta.herokuapp.com'
 ]
 
 
@@ -90,13 +91,25 @@ WSGI_APPLICATION = 'tutorfinder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+# Heroku
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'd589m93jg8b71h',
+        'HOST': 'ec2-52-44-209-165.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'zgededwpbugtwr',
+        'PASSWORD': '48aed899bc1205fde0601030f23c34eb60b4a72e18f569337914a3821b39875b'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -140,6 +153,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR / 'static_cdn'
 MEDIA_ROOT = BASE_DIR / 'media_cdn'
 
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
