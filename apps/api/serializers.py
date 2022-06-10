@@ -1,17 +1,16 @@
-from django.contrib.auth.models import User, Group
+from dataclasses import field
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from apps.core.models import CustomUser
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class CustomUserSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = User
-        fields = '__all__'
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = '__all__'
+        model = CustomUser
+        fields = (
+            'id', 'user_type', 'email', 'username',
+            'first_name', 'last_name', 'gender',
+            'date_of_birth', 'mobile_number', 'address_1',
+            'city', 'country', 'postal_code', 'school_name',
+            'level', 'experience', 'subject'
+        )

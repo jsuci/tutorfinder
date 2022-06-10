@@ -13,3 +13,6 @@ def dashboard(request):
     return render(request, 'core/dashboard.html')
 
 
+@verified_email_required
+def profile(request):
+    return render(request, 'core/profile.html')
