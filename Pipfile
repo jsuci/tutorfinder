@@ -8,6 +8,10 @@ django = "*"
 django-allauth = "*"
 djangorestframework = "*"
 pillow = "*"
+gunicorn = "*"
+psycopg2 = "*"
+django-heroku = "*"
+whitenoise = "*"
 
 [dev-packages]
 
