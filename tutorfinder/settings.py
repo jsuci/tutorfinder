@@ -100,14 +100,25 @@ WSGI_APPLICATION = 'tutorfinder.wsgi.application'
 
 
 # Heroku
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'd589m93jg8b71h',
+#         'HOST': 'ec2-52-44-209-165.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#         'USER': 'zgededwpbugtwr',
+#         'PASSWORD': '48aed899bc1205fde0601030f23c34eb60b4a72e18f569337914a3821b39875b'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'd589m93jg8b71h',
-        'HOST': 'ec2-52-44-209-165.compute-1.amazonaws.com',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tutorfinder',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432',
-        'USER': 'zgededwpbugtwr',
-        'PASSWORD': '48aed899bc1205fde0601030f23c34eb60b4a72e18f569337914a3821b39875b'
     }
 }
 
@@ -146,6 +157,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 
 django_heroku.settings(locals())

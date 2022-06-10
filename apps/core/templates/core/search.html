@@ -50,33 +50,34 @@
       for (var teacher in teachers){
         teacherDetails = data['results'][teacher]
 
-        var item = `
-        <div class="card mb-6">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                </figure>
+        if (teacherDetails['subject']) {
+          var item = `
+          <div class="card mb-6">
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">${teacherDetails['first_name']} ${teacherDetails['last_name']}</p>
+                  <p class="subtitle is-6">${teacherDetails['email']}</p>
+                </div>
               </div>
-              <div class="media-content">
-                <p class="title is-4">${teacherDetails['first_name']} ${teacherDetails['last_name']}</p>
-                <p class="subtitle is-6">${teacherDetails['email']}</p>
+          
+              <div class="content">
+                ${teacherDetails['experience']}
+                <p class="subtitle is-6 mt-3">Level: <span class="is-family-code has-text-weight-semibold">${teacherDetails['level']}</span></p>
+                <p class="subtitle is-6">Subject: <span class="is-family-code has-text-weight-semibold">${teacherDetails['subject']}</span></p>
               </div>
-            </div>
-        
-            <div class="content">
-              ${teacherDetails['experience']}
-              <p class="subtitle is-6 mt-3">Level: <span class="is-family-code has-text-weight-semibold">${teacherDetails['level']}</span></p>
-              <p class="subtitle is-6">Subject: <span class="is-family-code has-text-weight-semibold">${teacherDetails['subject']}</span></p>
             </div>
           </div>
-        </div>
-      `
-      
-      searchWrapper.innerHTML += item
+        `
+  
+        searchWrapper.innerHTML += item
 
-
+        }
       }
     } else {
       var item = `
