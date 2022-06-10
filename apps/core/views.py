@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from allauth.account.decorators import verified_email_required
+from allauth.account.decorators import login_required
 
 
 def homepage(request):
@@ -8,12 +8,12 @@ def homepage(request):
     else:
         return redirect("/login/")
 
-@verified_email_required
+@login_required
 def dashboard(request):
     return render(request, 'core/dashboard.html')
 
 
-@verified_email_required
+@login_required
 def profile(request):
     return render(request, 'core/profile.html')
 
