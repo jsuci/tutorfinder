@@ -20,7 +20,7 @@
     <!-- start navbar -->
     <nav class="navbar is-info">
         <div class="navbar-brand">
-        <a href="{% url 'frontpage' %}" class="navbar-item is-size-4 is-size-3-desktop is-white has-text-weight-bold">TutorFinder</router-link>
+        <a href="{% url 'homepage' %}" class="navbar-item is-size-4 is-size-3-desktop is-white has-text-weight-bold">TutorFinder</router-link>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
             <span aria-hidden="true"></span>
@@ -71,35 +71,6 @@
 </div>
 
 <script src="{% static '/js/main.js' %}" type="text/javascript"></script>
-
-
-{% comment %} 
-
-<script type="importmap">
-    {
-      "imports": {
-        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
-      }
-    }
-</script>
-
-<script type="module">
-    import { createApp } from 'vue'
-
-    createApp({
-        data() {
-            return {
-                showMobileMenu: false,
-            }
-        },
-        methods: {
-            toggle() {
-                this.showMobileMenu = !this.showMobileMenu
-            }
-        }
-    }).mount('#wrapper')
-</script> {% endcomment %}
-
 
 
 </body>

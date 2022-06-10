@@ -15,8 +15,8 @@ class CustomLoginForm(LoginForm):
 class CustomSignUpForm(SignupForm):
     # set custom fields here
     USER_TYPE_CHOICES = [
-        ('STUDENT', 'Student'),
-        ('TEACHER', 'Teacher')
+        ('student', 'Student'),
+        ('teacher', 'Teacher')
     ]
 
     user_type = forms.CharField(label='Account Type', widget=forms.Select(choices=USER_TYPE_CHOICES))
