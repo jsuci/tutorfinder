@@ -13,3 +13,29 @@
         align-items: end;
     }
   }
+
+
+#myNotification{
+  visibility:hidden;
+}
+
+#myNotification.show{
+  visibility:visible;
+  animation:fadeInOut 3s;
+}
+
+@keyframes fadeInOut{
+  5%,95%{opacity:1;top:50px}
+  15%,85%{opacity:1;top:30px}
+}
+
+.notification-list {
+  position:fixed;
+  top:0;
+  left:50%;
+  transform:translate(-50%);
+  text-align:center;
+  z-index:1;
+  visibility:hidden;
+  opacity:0;
+}

@@ -1,0 +1,17 @@
+a. Good morning everyone this is our web application called Tutorfinder. It is an online platform wherein students or learners can find teachers online that would help them in the subject or topic they are struggling with.
+
+Currently, we have managed to complete the login system. This includes users signing up to our web application and asking for their email, username, account type, and password. After signing up they will then be redirected to the dashboard but they cannot use the functionality inside the dashboard until they have verified their email address.
+
+Logging into the system is pretty straightforward as the user will only need to use his username or email to log in. Other features such forgot passwords, and changing email address are also being implemented on our login system.
+
+The unfinished part of our application includes searching for tutors, the messaging, and the feedback system. 
+
+
+b. We have already conducted manual testing on our login system and was able to achieve all the test case we have set for it. Test cases include verifying if the user cannot enter numbers only for the password, verifying error messages are present when there is an error in filling out the required fields, and so on.
+
+
+c. The difficulty I have encountered was overriding the default User model that Django uses. The goal of overriding the default user model for Django was to add more fields to the user model like account type, mobile number, address, etc.. the default user model of Django only provides limited information about the user. Aside from that, I am using the Django-allauth library for our login and signup functionality which then uses the default user model of Django.
+
+Aside from Django we barely used vue.js in our application as of now since I haven't figured out how to do the full integration of vue.js into our system aside from the hamburger menu pop-up when the application is on mobile.
+
+On our specification, we have stated we are going to use bootstrap for our CSS framework but ended up using Bulma CSS. Bulma CSS is a pure CSS only framework, it does not have any javascript integration, so pop-up modals like those on bootstrap will have to be coded manually on Bulma either through vanilla javascript or vue.js

@@ -1,11 +1,6 @@
-from random import choices
-from secrets import choice
 from allauth.account.forms import LoginForm, SignupForm, ResetPasswordForm, AddEmailForm
 from django import forms
-from .models import CustomUser
-from django.contrib.auth import get_user_model
 
-User = get_user_model()
 
 class CustomLoginForm(LoginForm):
 

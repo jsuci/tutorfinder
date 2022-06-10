@@ -1,0 +1,320 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edit Profile | TutorFinder{% endblock %}
+
+{% load static %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <h3 class="title is-3">Edit Profile</h3>
+            <h5 class="subtitle is-5">
+                Tell us more about yourself.
+            </h5>
+
+
+            <form id="profileForm">
+                
+                {% csrf_token %}
+
+
+                <!-- start first content -->
+
+
+                <h4 class="title is-4 mt-6">Basic Info</h4>
+                <div class="content p-1 has-background-grey-lighter mb-6">
+
+                    <!-- first row fields -->
+                    <div class="field is-horizontal is-justify-content-space-between">
+                        <div class="field column is-5">
+                            <label class="label">First Name</label>
+                            <p class="control is-expanded">
+                                {% if user.first_name %}
+                                    <input class="input" name="first_name" type="text" value="{{ user.first_name }}" >
+                                {% else %}
+                                    <input class="input" name="first_name" type="text" placeholder="First Name" >
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="field column is-5">
+                            <label class="label">Last Name</label>
+                            <p class="control is-expanded">
+                                {% if user.last_name %}
+                                   <input class="input" type="text" name="last_name" value="{{ user.last_name }}">
+                                {% else %}
+                                <input class="input" type="text" name="last_name" placeholder="Last Name">
+                                {% endif %}
+                                
+                            </p>
+                        </div>
+
+                        <div class="field column is-2">
+                            <label class="label">Gender</label>
+                            <div class="select is-expanded">
+                                <select class="is-hovered" name="gender">
+                                    <option value="m">Male</option>
+                                    <option value="f">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- second row fields -->
+                    <div class="field is-horizontal is-justify-content-space-between">
+
+                        <div class="field column is-3">
+                            <label class="label">Date of Birth</label>
+                            <p class="control is-expanded">
+
+                                {% if user.date_of_birth %}
+                                    <input class="input" name="date_of_birth" type="date" value="{{user.date_of_birth|date:"Y-m-d"}}" min="1988-01-01" max="2025-01-01">
+                                {% else %}
+                                    <input class="input" name="date_of_birth" type="date" value="1988-10-12" min="1988-01-01" max="2025-01-01">
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="field column is-5">
+                            <label class="label">Email</label>
+                            <p class="control is-expanded">
+                                <input class="input" type="email" placeholder="Email" value="{{ user.email }}" disabled>
+                            </p>
+                        </div>
+        
+                        <div class="field column is-4">
+                            <label class="label">Mobile Number</label>
+                            <p class="control is-expanded">
+                                {% if user.mobile_number %}
+                                    <input name="mobile_number" class="input" type="tel" placeholder="Mobile Number" value="{{ user.mobile_number }}">
+                                {% else %}
+                                    <input name="mobile_number" class="input" type="tel" placeholder="Mobile Number">
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end first content -->
+
+                <!-- start second content -->
+                <h4 class="title is-4">Home Address</h4>
+                <div class="content p-1 has-background-grey-lighter mb-6">
+
+                    <!-- first row fields -->
+                    <div class="field is-horizontal is-justify-content-space-between">
+                        <div class="field column is-6">
+                            <label class="label">Address Line 1</label>
+                            <p class="control is-expanded">
+
+                                {% if user.address_1 %}
+                                    <textarea name="address_1" rows="3" class="textarea">{{ user.address_1 }}</textarea>
+                                {% else %}
+                                    <textarea name="address_1" rows="3" class="textarea" placeholder="Address Line 1"></textarea>
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="field column is-6">
+                            <label class="label">Address Line 2</label>
+                            <p class="control is-expanded">
+                                {% if user.address_2 %}
+                                    <textarea name="address_2" rows="3" class="textarea" placeholder="Address Line 2">{{ user.address_2 }}</textarea>
+                                {% else %}
+                                    <textarea name="address_2" rows="3" class="textarea" placeholder="Address Line 2"></textarea>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- second row fields -->
+                    <div class="field is-horizontal is-justify-content-space-between">
+                        <div class="field column is-5">
+                            <label class="label">City</label>
+                            <p class="control is-expanded">
+
+                                {% if user.city %}
+                                    <input value="{{ user.city }}" name="city" class="input" type="text" placeholder="City">
+                                {% else %}
+                                    <input name="city" class="input" type="text" placeholder="City">
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="field column is-4">
+                            <label class="label">Country</label>
+                            <p class="control is-expanded">
+
+                                {% if user.country %}
+                                    <input value="{{ user.country }}" name="country" class="input" type="text" placeholder="Country">
+                                {% else %}
+                                    <input name="country" class="input" type="text" placeholder="Country">
+                                {% endif %}
+                            </p>
+                        </div>
+        
+                        <div class="field column is-3">
+                            <label class="label">Postal Code</label>
+                            <p class="control is-expanded">
+                                
+                                {% if user.postal_code %}
+                                    <input value="{{ user.postal_code }}" name="postal_code" class="input" type="text" placeholder="Postal Code">
+                                {% else %}
+                                    <input name="postal_code" class="input" type="text" placeholder="Postal Code">
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end second content -->
+
+
+                <!-- Field for teachers -->
+                {% if user.user_type == 'teacher' %}
+                    <h4 class="title is-4">Qualifications</h4>
+                    <div class="content p-1 pb-3 has-background-grey-lighter mb-6">
+
+                        <!-- first row fields -->
+                        <div class="field is-horizontal is-justify-content-space-between">
+                            <div class="field column is-6">
+                                <label class="label">School Name</label>
+                                <p class="control is-expanded">
+                                    
+                                    {% if user.school_name %}
+                                        <input name="school_name" class="input" type="text" placeholder="School Name" value="{{ user.school_name }}">
+                                    {% else %}
+                                        <input name="school_name" class="input" type="text" placeholder="School Name">
+                                    {% endif %}
+                                </p>
+                            </div>
+
+                            <div class="field column is-3">
+                                <label class="label">Level</label>
+                                <div class="select is-fullwidth">
+                                    <select class="is-hovered" name="level">
+                                        <option value="undergraduate">Undergraduate</option>
+                                        <option value="postgraduate">Postgraduate</option>
+                                        <option value="doctoral">Doctoral</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="field column is-3">
+                                <label class="label">Subject</label>
+                                <div class="select is-fullwidth">
+                                    <select class="is-hovered" name="subject">
+                                        <option value="accounting">Accounting</option>
+                                        <option value="speech">Speech</option>
+                                        <option value="compsci">Computer Science</option>
+                                        <option value="english">English</option>
+                                        <option value="humanities">Humanities</option>
+                                        <option value="writing">Writing</option>
+                                        <option value="math">Math</option>
+                                        <option value="natsci">Natural Science</option>
+                                        <option value="socsci">Social Science</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- second row fields -->
+                        <div class="field is-horizontal is-justify-content-space-between">
+                            <div class="field column is-12">
+                                <label class="label">Teaching Experience</label>
+                                <p class="control is-expanded">
+                                    {% if user.experience %}
+                                        <textarea name="experience" rows="3" class="textarea" placeholder="Teaching Experience">{{ user.experience }}</textarea>
+                                    {% else %}
+                                        <textarea name="experience" rows="3" class="textarea" placeholder="Teaching Experience"></textarea>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+                <div class="buttons">
+                    <button class="button is-success" type="submit">Save</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="notification-list" id="myNotification">
+
+    <div class="notification" id="myStatus">
+        <div class="icon-text">
+          <span class="icon">
+            <i class="fas fa-lg" id="myIcon"></i>
+          </span>
+          <span class="ml-2" id="myText">Something went wrong saving your profile.</span>
+        </div>
+      </div>
+
+</div>
+
+<script>
+    
+    function showToast(text, status, icon){
+        var x = document.getElementById("myNotification");
+        var y = document.getElementById("myStatus");
+        var z = document.getElementById("myIcon");
+
+        x.classList.add("show");
+        y.classList.add(status);
+        z.classList.add(icon);
+        
+        document.getElementById("myText").innerHTML = text;
+        
+        setTimeout(function(){
+          x.classList.remove("show");
+          y.classList.remove(status);
+          z.classList.remove(icon);
+        },3000);
+        
+    }
+
+    var form = document.getElementById('profileForm');
+    function handleForm(e) {
+        event.preventDefault();
+    
+        var url = "{{ request.scheme }}://{{ request.get_host }}{% url 'user_detail' request.user.id %}"
+
+
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData.entries());
+
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json',
+            },
+            mode: 'same-origin',
+            body: JSON.stringify(formProps)
+        }).then(function(response){
+            console.log(response);
+            if (response.status == 200) {
+                showToast("Successfully updated your profile.", "is-success", "fa-check")
+            } else {
+                showToast("Something went wrong saving your profile.", "is-danger", "fa-exclamation")
+            }
+        })
+
+    } 
+    
+    form.addEventListener('submit', handleForm);
+</script>
+
+
+{% endblock %}
