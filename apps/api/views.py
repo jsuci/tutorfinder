@@ -14,3 +14,8 @@ class CustomUserList(generics.ListCreateAPIView):
 class CustomUserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+
+
+class TutorList(generics.ListAPIView):
+    queryset = CustomUser.objects.all().filter(user_type='teacher').order_by('id')
+    serializer_class = CustomUserSerializer
