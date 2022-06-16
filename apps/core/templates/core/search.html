@@ -60,7 +60,7 @@
   // fetch tutors via API
   const loadTutors = async () => {
       try {
-          const res = await fetch('http://localhost:8000/api/v1/user-list/tutors/');
+          const res = await fetch('https://tutorfinderbeta.herokuapp.com/api/v1/user-list/tutors/');
           tutors = await res.json();
   
           displayTutors(tutors);
