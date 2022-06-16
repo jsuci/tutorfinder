@@ -64,6 +64,7 @@ class CustomUser(AbstractBaseUser):
         ('math', 'Math'),
         ('natsci', 'Natural Science'),
         ('socsci', 'Social Science'),
+        ('writing', 'Writing'),
     ]
 
 
@@ -81,12 +82,12 @@ class CustomUser(AbstractBaseUser):
     user_type       = models.CharField(max_length=8, choices=USER_TYPE_CHOICES, blank=True, null=True)
 
     # basic info
-    first_name      = models.CharField(max_length=50, blank=True, null=True)
-    last_name       = models.CharField(max_length=50, blank=True, null=True)
+    first_name      = models.CharField(max_length=50, blank=False, null=False)
+    last_name       = models.CharField(max_length=50, blank=False, null=False)
     gender          = models.CharField(max_length=1, choices=GENDER_TYPE_CHOICES, blank=True, null=True)
     date_of_birth   = models.DateField(blank=True, null=True)
     mobile_regex    = RegexValidator(regex=r'^0?\d{9,15}$', message="Phone number must be entered in the format: '09xxxxxxxxx'.")
-    mobile_number   = models.CharField(validators=[mobile_regex], max_length=17, blank=True, null=True)
+    mobile_number   = models.CharField(validators=[mobile_regex], max_length=17, blank=False, null=False)
 
     # home address
     address_1       = models.CharField(max_length=128, blank=True, null=True)
@@ -98,9 +99,9 @@ class CustomUser(AbstractBaseUser):
 
     # qualifications
     school_name     = models.CharField(max_length=128, blank=True, null=True)
-    level           = models.CharField(max_length=15, choices=LEVEL_TYPE_CHOICES, blank=True, null=True)
+    level           = models.CharField(max_length=15, choices=LEVEL_TYPE_CHOICES, blank=False, null=False)
     subject         = models.CharField(max_length=15, choices=SUBJECT_TYPE_CHOICES, blank=True, null=True)
-    experience      = models.TextField(blank=True, null=True)
+    experience      = models.TextField(blank=False, null=False)
 
     objects = CustomUserManager()
 
