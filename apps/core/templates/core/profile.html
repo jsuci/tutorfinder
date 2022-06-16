@@ -34,9 +34,9 @@
                             <label class="label">First Name</label>
                             <p class="control is-expanded">
                                 {% if user.first_name %}
-                                    <input class="input" name="first_name" type="text" value="{{ user.first_name }}" >
+                                    <input class="input" name="first_name" type="text" value="{{ user.first_name }}" required="required">
                                 {% else %}
-                                    <input class="input" name="first_name" type="text" placeholder="First Name" >
+                                    <input class="input" name="first_name" type="text" placeholder="First Name" required="required">
                                 {% endif %}
                             </p>
                         </div>
@@ -45,9 +45,9 @@
                             <label class="label">Last Name</label>
                             <p class="control is-expanded">
                                 {% if user.last_name %}
-                                   <input class="input" type="text" name="last_name" value="{{ user.last_name }}">
+                                   <input class="input" type="text" name="last_name" value="{{ user.last_name }}" required="required">
                                 {% else %}
-                                <input class="input" type="text" name="last_name" placeholder="Last Name">
+                                <input class="input" type="text" name="last_name" placeholder="Last Name" required="required">
                                 {% endif %}
                                 
                             </p>
@@ -56,7 +56,8 @@
                         <div class="field column is-2">
                             <label class="label">Gender</label>
                             <div class="select is-expanded">
-                                <select class="is-hovered" name="gender">
+                                <select class="is-hovered" name="gender" required>
+                                    <option value="">Select</option>
                                     <option value="m">Male</option>
                                     <option value="f">Female</option>
                                 </select>
@@ -90,9 +91,9 @@
                             <label class="label">Mobile Number</label>
                             <p class="control is-expanded">
                                 {% if user.mobile_number %}
-                                    <input name="mobile_number" class="input" type="tel" placeholder="Mobile Number" value="{{ user.mobile_number }}">
+                                    <input name="mobile_number" class="input" type="tel" placeholder="Mobile Number" value="{{ user.mobile_number }}" required="required">
                                 {% else %}
-                                    <input name="mobile_number" class="input" type="tel" placeholder="Mobile Number">
+                                    <input name="mobile_number" class="input" type="tel" placeholder="Mobile Number" required="required">
                                 {% endif %}
                             </p>
                         </div>
@@ -195,7 +196,8 @@
                             <div class="field column is-3">
                                 <label class="label">Level</label>
                                 <div class="select is-fullwidth">
-                                    <select class="is-hovered" name="level">
+                                    <select class="is-hovered" name="level" required>
+                                        <option value="">Select</option>
                                         <option value="undergraduate">Undergraduate</option>
                                         <option value="postgraduate">Postgraduate</option>
                                         <option value="doctoral">Doctoral</option>
@@ -206,7 +208,8 @@
                             <div class="field column is-3">
                                 <label class="label">Subject</label>
                                 <div class="select is-fullwidth">
-                                    <select class="is-hovered" name="subject">
+                                    <select class="is-hovered" name="subject" required>
+                                        <option value="">Select</option>
                                         <option value="accounting">Accounting</option>
                                         <option value="speech">Speech</option>
                                         <option value="compsci">Computer Science</option>
