@@ -19,104 +19,89 @@
 
             <form id="searchForm" class="mb-6">
                 
-                <div class="field has-addons">
+                <div class="field">
                     <div class="control is-expanded">
-                      <input name="search" class="input is-medium" type="text" placeholder="Find a tutor">
+                      <input id="searchBar" class="input is-medium" type="text" placeholder="Find a tutor">
                     </div>
-                    <div class="control">
-                      <button class="button is-info is-medium" type="submit">
-                        Search
-                      </button>
-                    </div>
-                  </div>
+                </div>
 
             </form>
+
+            <ul id="tutorList"></ul>
 
 
         </div>
     </div>
 </div>
 
+
 <script>
-  var form = document.getElementById('searchForm');
-  var searchWrapper = document.getElementById('searchWrapper');
-
-
-  function buildCard(data){
-
-    teachers = data['results']
-
-    if (teachers.length != 0) {
-      for (var teacher in teachers){
-        teacherDetails = data['results'][teacher]
-
-        if (teacherDetails['subject']) {
-          var item = `
-          <div class="card mb-6">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-4">${teacherDetails['first_name']} ${teacherDetails['last_name']}</p>
-                  <p class="subtitle is-6">${teacherDetails['email']}</p>
-                </div>
-              </div>
-          
-              <div class="content">
-                ${teacherDetails['experience']}
-                <p class="subtitle is-6 mt-3">Level: <span class="is-family-code has-text-weight-semibold">${teacherDetails['level']}</span></p>
-                <p class="subtitle is-6">Subject: <span class="is-family-code has-text-weight-semibold">${teacherDetails['subject']}</span></p>
-              </div>
-            </div>
-          </div>
-        `
+  const tutorList = document.getElementById('tutorList');
+  const searchBar = document.getElementById('searchBar');
+  let tutors = [];
   
-        searchWrapper.innerHTML += item
-
-        }
+  
+  // change the tutor listing everytime a new character
+  // is entered in the search bar
+  searchBar.addEventListener('keyup', (e) => {
+      const searchString = e.target.value.toLowerCase();
+  
+      const filteredTutors = tutors.filter((teacher) => {
+          console.log(teacher)
+          return (
+              teacher.subject.toLowerCase().includes(searchString) ||
+              teacher.first_name.toLowerCase().includes(searchString) ||
+              teacher.last_name.toLowerCase().includes(searchString)
+          );
+      });
+      displayTutors(filteredTutors);
+  });
+  
+  // fetch tutors via API
+  const loadTutors = async () => {
+      try {
+          const res = await fetch('http://localhost:8000/api/v1/user-list/tutors/');
+          tutors = await res.json();
+  
+          displayTutors(tutors);
+      } catch (err) {
+          console.error(err);
       }
-    } else {
-      var item = `
-        <div class="card mb-6">
-          <div class="card-content">
-            <p class="subtitle is-4 has-text-centered">No match found.</p>
-          </div>
-        </div>
-      `
-      
-      searchWrapper.innerHTML += item
-      
-    }
-
-  }
-
-  function handleForm(e) {
-      event.preventDefault();
-
-      const formData = new FormData(e.target);
-      const formProps = Object.fromEntries(formData.entries());
-
-      var url = "{{ request.scheme }}://{{ request.get_host }}{% url 'user_list' %}?"
-      var urlParams = url + new URLSearchParams({
-        'search': formProps['search']
-      })
-
-      fetch(urlParams)
-      .then(resp => resp.json())
-      .then(function(data){
-        buildCard(data)
-      })
-      
-  } 
+  };
   
+  const displayTutors = (teacher) => {
+      const htmlString = teacher
+          .map((teacher) => {
+              return `
+              <div class="card mb-6">
+              <div class="card-content">
+                  <div class="media">
+                  <div class="media-left">
+                      <figure class="image is-48x48">
+                      <img src="{% static '/images/profile-icon.png' %}" alt="Placeholder image">
+                      </figure>
+                  </div>
+                  <div class="media-content">
+                      <p class="title is-4">${teacher.first_name} ${teacher.last_name}</p>
+                      <p class="subtitle is-6">${teacher.email}</p>
+                  </div>
+                  </div>
+              
+                  <div class="content">
+                  <p>${teacher.mobile_number}</p>
+                  <p class="subtitle is-6 mb-1 mt-3">Mobile #: <span class="is-family-code has-text-weight-semibold">${teacher.mobile_number}</span></p>
+                  <p class="subtitle is-6 mb-1">Level: <span class="is-family-code has-text-weight-semibold">${teacher.level}</span></p>
+                  <p class="subtitle is-6 mb-1">Subject: <span class="is-family-code has-text-weight-semibold">${teacher.subject}</span></p>
+                  </div>
+              </div>
+              </div>
+          `;
+          })
+          .join('');
+      tutorList.innerHTML = htmlString;
+  };
   
-  form.addEventListener('submit', handleForm);
-
-
-</script>
+  loadTutors();
+</script>  
 
 {% endblock %}
