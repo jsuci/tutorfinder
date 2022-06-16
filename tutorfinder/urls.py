@@ -17,7 +17,7 @@ urlpatterns = [
     path('', homepage, name='homepage'),
     path('dashboard/', dashboard, name='dashboard'),
     path('profile/', profile, name='profile'),
-    path('tutor/', search, name='search')
+    path('search/', search, name='search')
 ]
 
 if settings.DEBUG:
