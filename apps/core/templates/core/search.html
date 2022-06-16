@@ -47,7 +47,6 @@
       const searchString = e.target.value.toLowerCase();
   
       const filteredTutors = tutors.filter((teacher) => {
-          console.log(teacher)
           return (
               teacher.subject.toLowerCase().includes(searchString) ||
               teacher.first_name.toLowerCase().includes(searchString) ||
