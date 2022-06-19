@@ -50,7 +50,8 @@
           return (
               teacher.subject.toLowerCase().includes(searchString) ||
               teacher.first_name.toLowerCase().includes(searchString) ||
-              teacher.last_name.toLowerCase().includes(searchString)
+              teacher.last_name.toLowerCase().includes(searchString) ||
+              teacher.experience.toLowerCase().includes(searchString)
           );
       });
       displayTutors(filteredTutors);
@@ -59,7 +60,7 @@
   // fetch tutors via API
   const loadTutors = async () => {
       try {
-          const res = await fetch('https://tutorfinderbeta.herokuapp.com/api/v1/user-list/tutors/');
+          const res = await fetch('http://localhost:8000/api/v1/user-list/tutors/');
           tutors = await res.json();
   
           displayTutors(tutors);
