@@ -87,7 +87,7 @@ class CustomUser(AbstractBaseUser):
     gender          = models.CharField(max_length=1, choices=GENDER_TYPE_CHOICES, blank=True, null=True)
     date_of_birth   = models.DateField(blank=True, null=True)
     mobile_regex    = RegexValidator(regex=r'^0?\d{9,15}$', message="Phone number must be entered in the format: '09xxxxxxxxx'.")
-    mobile_number   = models.CharField(validators=[mobile_regex], max_length=17, blank=False, null=False)
+    mobile_number   = models.CharField(validators=[mobile_regex], max_length=17, blank=True, null=True)
 
     # home address
     address_1       = models.CharField(max_length=128, blank=True, null=True)
@@ -99,9 +99,9 @@ class CustomUser(AbstractBaseUser):
 
     # qualifications
     school_name     = models.CharField(max_length=128, blank=True, null=True)
-    level           = models.CharField(max_length=15, choices=LEVEL_TYPE_CHOICES, blank=False, null=False)
+    level           = models.CharField(max_length=15, choices=LEVEL_TYPE_CHOICES, blank=True, null=True)
     subject         = models.CharField(max_length=15, choices=SUBJECT_TYPE_CHOICES, blank=True, null=True)
-    experience      = models.TextField(blank=False, null=False)
+    experience      = models.TextField(blank=True, null=True)
 
     objects = CustomUserManager()
 
